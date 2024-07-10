@@ -1,0 +1,10 @@
+const express = require("express");
+const passport = require("passport");
+const app = express.Router();
+app.use(passport.authenticate("jwt", { session: false }));
+app.use("/users", require("./user.route"));
+app.use("/about", require("./about.route"));
+app.use("/contract", require("./contract.route"));
+app.use("/news", require("./news.route"));
+app.use("/products", require("./product.route"));
+module.exports = app;
