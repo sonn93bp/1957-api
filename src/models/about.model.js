@@ -1,11 +1,16 @@
 const { Schema, model } = require("mongoose");
 
 var aboutSchema = new Schema({
-  company: {
+  content: {
     type: String,
   },
-  phone: {
-    type: String,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updateAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 
