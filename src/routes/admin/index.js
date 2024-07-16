@@ -3,6 +3,7 @@ const passport = require("passport");
 const app = express.Router();
 app.use(passport.authenticate("jwt", { session: false }));
 app.use("/users", require("./user.route"));
+app.use("/slider", require("./slider.route"));
 app.use("/about", require("./about.route"));
 app.use("/contract", require("./contract.route"));
 app.use("/news", require("./news.route"));

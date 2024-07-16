@@ -2,21 +2,23 @@ const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const passport = require("passport");
 const userService = require("./../services/user.service");
+const {
+  jwt: { jwtSecret },
+} = require("./../../lib/config/env.config");
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: "G8342ltj55bMzlP3YfQdZWlL56E1de7t", // Replace with your actual secret key
+  secretOrKey: jwtSecret, // Replace with your actual secret key
 };
 // Configure JWT strategy
 passport.use(
   new JwtStrategy(jwtOptions, function (jwt_payload, done) {
-    console.log(jwt_payload);
     // JWT verification and user lookup logic
+    console.log(jwtSecret);
     userService
       .findByEmail(jwt_payload.email)
-      .then((info) => {
-        console.log(info);
-        if (info) {
-          return done(null, info);
+      .then((user) => {
+        if (user) {
+          return done(null, user);
         }
         return done(null, false);
       })

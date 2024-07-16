@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "dev": "node --trace-deprecation --watch --env-file=.env server"
+    "dev": "node --trace-deprecation --watch --env-file=.env server",
+    "prod": "node --env-file=.env server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -20,8 +22,10 @@
     "express-validation": "^4.1.1",
     "helmet": "^7.1.0",
     "ioredis": "^5.4.1",
+    "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "method-override": "^3.0.0",
+    "moment": "^2.30.1",
     "mongoose": "^8.4.5",
     "morgan": "^1.10.0",
     "passport": "^0.7.0",
