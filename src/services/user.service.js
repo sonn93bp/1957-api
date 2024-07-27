@@ -5,8 +5,6 @@ const { pwdBcrypt } = require("./../../lib/utils/bcrypt.utils");
 
 const findByEmail = async (email) => {
   const result = await User.findOne({ email: email });
-  console.log(result);
-  console.log(!result);
   if (!result) throw new NotFoundError({ objectName: "Email" });
   return result;
 };

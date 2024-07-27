@@ -4,6 +4,7 @@ const { env, port } = require("./lib/config/env.config");
 const { MongooseConnect } = require("./lib/config/mongoose.config");
 const logger = require("./lib/config/logger.config");
 const passport = require("./src/auth/passport.auth");
+const { InitDbDefault } = require("./src/database/init.database");
 
 // Enable authentication
 app.use(passport.initialize());
@@ -22,6 +23,7 @@ server.on("listening", () => {
     "G8342ltj55bMzlP3YfQdZWlL56E1de7t",
     { expiresIn: "1h" }
   );
+  InitDbDefault();
   logger.info(token);
 });
 
