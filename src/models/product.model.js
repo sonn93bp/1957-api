@@ -17,11 +17,11 @@ var productSchema = new Schema({
     type: String,
     required: true,
   },
-  createdAt: {
+  created_at: {
     type: Date,
     default: Date.now,
   },
-  updateAt: {
+  update_at: {
     type: Date,
     default: Date.now,
   },

@@ -13,9 +13,8 @@ const jwtOptions = {
 passport.use(
   new JwtStrategy(jwtOptions, function (jwt_payload, done) {
     // JWT verification and user lookup logic
-    console.log(jwtSecret);
     userService
-      .findByEmail(jwt_payload.email)
+      .getInfo(jwt_payload.email)
       .then((user) => {
         if (user) {
           return done(null, user);

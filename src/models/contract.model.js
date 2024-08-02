@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const { HidenJsonField } = require("../../lib/mongoose.hiden.plugin");
 
 var addressSchema = new Schema({
   address: {
@@ -20,20 +21,23 @@ var contractSchema = new Schema({
   hotline: {
     type: String,
     required: true,
+    hiden: true,
   },
-  address: [addressSchema],
+  address_list: [addressSchema],
   email: {
     type: [String],
     required: true,
   },
-  createdAt: {
+  created_at: {
     type: Date,
     default: Date.now,
+    hiden: true,
   },
-  updateAt: {
+  update_at: {
     type: Date,
     default: Date.now,
+    hiden: true,
   },
 });
-
+contractSchema.plugin(HidenJsonField);
 module.exports = model("Contract", contractSchema);

@@ -10,10 +10,10 @@ const create = async (req, res, next) => {
   }
 };
 
-const findByEmail = async (req, res, next) => {
+const getInfo = async (req, res, next) => {
   try {
-    const { email } = req.body;
-    const response = await userService.findByEmail(email);
+    const { email } = req.user;
+    const response = await userService.getInfo(email);
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     return next(error);
@@ -22,5 +22,5 @@ const findByEmail = async (req, res, next) => {
 
 module.exports = {
   create,
-  findByEmail,
+  getInfo,
 };

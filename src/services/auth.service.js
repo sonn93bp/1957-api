@@ -9,10 +9,7 @@ const BadRequestError = require("../../lib/errors/badrequest.error");
 
 const logIn = async (email, password) => {
   var user = await userService.findByEmail(email);
-  console.log(password);
-  console.log(user.password);
   const verify = await compare(password, user.password);
-  console.log(verify);
   if (verify) {
     return {
       email: email,

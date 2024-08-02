@@ -1,4 +1,3 @@
-const { bool } = require("joi");
 const { Schema, model } = require("mongoose");
 
 var sliderSchema = new Schema({
@@ -17,11 +16,11 @@ var sliderSchema = new Schema({
   description: {
     type: String,
   },
-  createdAt: {
+  created_at: {
     type: Date,
     default: Date.now,
   },
-  updateAt: {
+  update_at: {
     type: Date,
     default: Date.now,
   },

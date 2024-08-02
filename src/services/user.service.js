@@ -2,6 +2,7 @@ const User = require("./../models/user.model");
 const logger = require("../../lib/config/logger.config");
 const NotFoundError = require("../../lib/errors/notfound.error");
 const { pwdBcrypt } = require("./../../lib/utils/bcrypt.utils");
+const { userMapper } = require("./mappers/model.mappers");
 
 const findByEmail = async (email) => {
   const result = await User.findOne({ email: email });
@@ -12,9 +13,19 @@ const findByEmail = async (email) => {
 const create = async (userData) => {
   try {
     userData.password = await pwdBcrypt(userData.password);
-    const user = new User(userData);
+    const user = new User(userData, userMapper.default);
     const result = await user.save();
+    delete result.password;
     return result;
+  } catch (err) {
+    logger.error(err);
+  }
+};
+
+const getInfo = async (email) => {
+  try {
+    const info = await User.findOne({ email: email }, userMapper.info);
+    return info;
   } catch (err) {
     logger.error(err);
   }
@@ -23,4 +34,5 @@ const create = async (userData) => {
 module.exports = {
   findByEmail,
   create,
+  getInfo,
 };
