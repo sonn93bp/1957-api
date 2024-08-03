@@ -21,9 +21,15 @@ const update = async (id, modifyProduct) => {
   const product = Product.updateOne(filter, modifyProduct);
   return product;
 };
+
+const getBySlug = async (slug) => {
+  const product = await Product.findOne({ slug: slug });
+  return product;
+};
 module.exports = {
   getAll,
   getOne,
   create,
   update,
+  getBySlug,
 };

@@ -38,9 +38,19 @@ const update = async (req, res, next) => {
     return next(error);
   }
 };
+const getBySlug = async (req, res, next) => {
+  try {
+    const { slug } = req.params;
+    const response = await productService.getBySlug(slug);
+    return res.status(OK).json({ data: response, success: "SUCCESS" });
+  } catch (error) {
+    return next(error);
+  }
+};
 module.exports = {
   create,
   getOne,
   getAll,
   update,
+  getBySlug,
 };
