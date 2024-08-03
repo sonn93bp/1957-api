@@ -16,6 +16,10 @@ var sliderSchema = new Schema({
   description: {
     type: String,
   },
+  index: {
+    type: Number,
+    default: 1,
+  },
   created_at: {
     type: Date,
     default: Date.now,

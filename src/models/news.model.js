@@ -17,6 +17,10 @@ var newsSchema = new Schema({
     type: String,
     required: true,
   },
+  index: {
+    type: Number,
+    default: 1,
+  },
   created_at: {
     type: Date,
     default: Date.now,
