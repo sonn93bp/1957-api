@@ -26,6 +26,10 @@ var seoSchema = new Schema({
 
 var productSchema = new Schema({
   seo: seoSchema,
+  link: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
