@@ -1,4 +1,4 @@
-const Request = require("./../models/requet.model");
+const Request = require("../models/request.model");
 
 const getAll = async () => {
   const result = await Request.find();
