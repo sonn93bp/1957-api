@@ -38,7 +38,7 @@ var productSchema = new Schema({
     type: String,
     required: true,
   },
-  color: {
+  colors: {
     type: [String],
     require: true,
   },

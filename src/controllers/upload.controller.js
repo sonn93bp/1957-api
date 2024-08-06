@@ -4,7 +4,7 @@ const uploadMultiFile = async (req, res, next) => {
     if (!req.files || req.files.length === 0) {
       return res.status(400).send("No files uploaded.");
     }
-    res.status(200).json({ files: req.files });
+    res.status(200).json({ images: req.files });
   } catch (error) {
     return next(error);
   }
