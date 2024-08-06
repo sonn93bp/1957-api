@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const { ImageSchema } = require("./sub/image.model");
 
 var seoSchema = new Schema({
   title: {
@@ -33,10 +34,7 @@ var productSchema = new Schema({
     type: [String],
     require: true,
   },
-  image: {
-    type: [String],
-    required: true,
-  },
+  image: [ImageSchema],
   content: {
     type: String,
     required: true,
