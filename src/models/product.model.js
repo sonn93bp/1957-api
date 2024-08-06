@@ -42,7 +42,7 @@ var productSchema = new Schema({
     type: [String],
     require: true,
   },
-  image: [ImageSchema],
+  images: [ImageSchema],
   content: {
     type: String,
     required: true,
