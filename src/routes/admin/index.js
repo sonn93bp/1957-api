@@ -9,4 +9,5 @@ app.use("/contract", require("./contract.route"));
 app.use("/news", require("./news.route"));
 app.use("/products", require("./product.route"));
 app.use("/files", require("./files.route"));
+app.use("/requests", require("./request.route"));
 module.exports = app;

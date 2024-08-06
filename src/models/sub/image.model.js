@@ -1,12 +1,26 @@
 const { Schema } = require("mongoose");
 
 module.exports.ImageSchema = new Schema({
-  img_google_drive_id: {
+  uid: {
     type: String,
     require: true,
   },
-  uri: {
+  status: {
+    type: String,
+    default: "Done",
+  },
+  name: {
     type: String,
     require: true,
+  },
+  url: {
+    type: String,
+    require: true,
+  },
+  originalname: {
+    type: String,
+  },
+  mimetype: {
+    type: String,
   },
 });

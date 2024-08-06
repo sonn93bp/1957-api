@@ -18,6 +18,10 @@ var seoSchema = new Schema({
     type: String,
     require: true,
   },
+  schema: {
+    type: String,
+    require: true,
+  },
 });
 
 var productSchema = new Schema({
@@ -42,6 +46,7 @@ var productSchema = new Schema({
   slug: {
     type: String,
     require: true,
+    unique: true,
   },
   index: {
     type: Number,

@@ -26,10 +26,18 @@ const getBySlug = async (slug) => {
   const product = await Product.findOne({ slug: slug });
   return product;
 };
+
+const deleteById = async (id) => {
+  const result = await Product.deleteOne({
+    _id: id,
+  });
+  return result;
+};
 module.exports = {
   getAll,
   getOne,
   create,
   update,
   getBySlug,
+  deleteById,
 };
