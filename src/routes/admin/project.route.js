@@ -1,5 +1,5 @@
 const app = require("express").Router();
-const controller = require("../../controllers/product.controller");
+const controller = require("../../controllers/project.controller");
 app.route("/").post(controller.create).get(controller.getAll);
 app
   .route("/:id")

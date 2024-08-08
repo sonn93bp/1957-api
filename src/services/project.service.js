@@ -1,34 +1,34 @@
-const Product = require("./../models/product.model");
+const Project = require("../models/project.model");
 
 const getAll = async () => {
-  const result = await Product.find();
+  const result = await Project.find();
   return result;
 };
 
 const getOne = async (id) => {
-  const result = await Product.findById({ _id: id });
+  const result = await Project.findById({ _id: id });
   return result;
 };
 
 const create = async (body) => {
-  const product = new Product(body);
-  const result = await product.save();
+  const project = new Project(body);
+  const result = await project.save();
   return result;
 };
 
 const update = async (id, body) => {
   const filter = { _id: id };
-  const product = Product.updateOne(filter, body);
-  return product;
+  const project = Project.updateOne(filter, body);
+  return project;
 };
 
 const getBySlug = async (slug) => {
-  const product = await Product.findOne({ slug: slug });
-  return product;
+  const project = await Project.findOne({ slug: slug });
+  return project;
 };
 
 const deleteById = async (id) => {
-  const result = await Product.deleteOne({
+  const result = await Project.deleteOne({
     _id: id,
   });
   return result;

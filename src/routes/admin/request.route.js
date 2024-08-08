@@ -2,7 +2,7 @@ const app = require("express").Router();
 const controller = require("../../controllers/request.controller");
 app.route("/").post(controller.create).get(controller.getAll);
 app
-  .route("/:requestId")
+  .route("/:id")
   .put(controller.update)
   .get(controller.getOne)
   .delete(controller.deleteById);

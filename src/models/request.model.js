@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const { Status } = require("../../lib/utils/enum/status.enum");
 
 var requestSchema = new Schema({
   index: {
@@ -19,6 +20,11 @@ var requestSchema = new Schema({
   },
   note: {
     type: String,
+  },
+  status: {
+    type: Number,
+    enum: Object.values(Status),
+    default: Status.Pending,
   },
   created_at: {
     type: Date,

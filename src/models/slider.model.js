@@ -1,7 +1,12 @@
 const { Schema, model } = require("mongoose");
 const { ImageSchema } = require("./sub/image.model");
+const { Status } = require("../../lib/utils/enum/status.enum");
 
 var sliderSchema = new Schema({
+  index: {
+    type: Number,
+    default: 1,
+  },
   title: {
     type: String,
     required: true,
@@ -14,9 +19,10 @@ var sliderSchema = new Schema({
   description: {
     type: String,
   },
-  index: {
+  status: {
     type: Number,
-    default: 1,
+    enum: Object.values(Status),
+    default: Status.Deactive,
   },
   created_at: {
     type: Date,

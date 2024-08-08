@@ -1,9 +1,9 @@
-const newsService = require("../services/news.service");
+const service = require("../services/news.service");
 const { CREATED, OK } = require("../../lib/utils/constants.utils");
 
 const create = async (req, res, next) => {
   try {
-    const response = await newsService.create(req.body);
+    const response = await service.create(req.body);
     return res.status(CREATED).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     return next(error);
@@ -13,7 +13,7 @@ const create = async (req, res, next) => {
 const get = async (req, res, next) => {
   try {
     const { newsId } = req.params;
-    const response = await newsService.get(newsId);
+    const response = await service.get(newsId);
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     return next(error);
@@ -22,7 +22,7 @@ const get = async (req, res, next) => {
 const update = async (req, res, next) => {
   try {
     const { newsId } = req.params;
-    const response = await newsService.update(newsId, req.body);
+    const response = await service.update(newsId, req.body);
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     console.log(error);

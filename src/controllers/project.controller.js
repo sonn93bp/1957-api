@@ -1,4 +1,4 @@
-const service = require("../services/product.service");
+const service = require("../services/project.service");
 const { CREATED, OK } = require("../../lib/utils/constants.utils");
 
 const create = async (req, res, next) => {

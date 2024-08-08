@@ -3,14 +3,14 @@ const { ImageSchema } = require("./sub/image.model");
 const { Status } = require("../../lib/utils/enum/status.enum");
 const { SeoSchema } = require("./sub/seo.model");
 
-var productSchema = new Schema({
+var serviceSchema = new Schema({
   index: {
     type: Number,
     default: 1,
   },
   parent: {
     type: Schema.Types.ObjectId,
-    ref: "Product",
+    ref: "Service",
   },
   slug: {
     type: String,
@@ -55,4 +55,4 @@ var productSchema = new Schema({
   },
 });
 
-module.exports = model("Product", productSchema);
+module.exports = model("Service", serviceSchema);
