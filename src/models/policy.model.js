@@ -3,18 +3,41 @@ const { ImageSchema } = require("./sub/image.model");
 const { Status } = require("../../lib/utils/enum/status.enum");
 const { SeoSchema } = require("./sub/seo.model");
 
-var sliderSchema = new Schema({
+var policySchema = new Schema({
   index: {
     type: Number,
     default: 1,
+  },
+  parent: {
+    type: Schema.Types.ObjectId,
+    ref: "Policy",
+  },
+  slug: {
+    type: String,
+    require: true,
+    unique: true,
+  },
+  link: {
+    type: String,
+    required: true,
+    unique: true,
   },
   title: {
     type: String,
     required: true,
   },
-  image_url: ImageSchema,
   description: {
     type: String,
+    required: true,
+  },
+  images: [ImageSchema],
+  colors: {
+    type: [String],
+    require: true,
+  },
+  content: {
+    type: String,
+    required: true,
   },
   seo: SeoSchema,
   status: {
@@ -32,4 +55,4 @@ var sliderSchema = new Schema({
   },
 });
 
-module.exports = model("Slider", sliderSchema);
+module.exports = model("Policy", policySchema);

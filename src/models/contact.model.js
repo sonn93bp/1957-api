@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 const { HidenJsonField } = require("../../lib/mongoose.hiden.plugin");
 const { AddressSchema } = require("./sub/address.model");
+const { SeoSchema } = require("./sub/seo.model");
 
 var contactSchema = new Schema({
   hotline: {

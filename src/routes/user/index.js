@@ -8,4 +8,5 @@ app.use("/products", require("./product.route"));
 app.use("/requests", require("./request.route"));
 app.use("/services", require("./service.route"));
 app.use("/projects", require("./project.route"));
+app.use("/policies", require("./policy.route"));
 module.exports = app;
