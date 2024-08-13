@@ -11,6 +11,7 @@ var productSchema = new Schema({
   parent: {
     type: Schema.Types.ObjectId,
     ref: "Product",
+    require: false,
   },
   slug: {
     type: String,

@@ -16,7 +16,7 @@ const create = async (body) => {
   }
 };
 
-const update = async (body) => {
+const update = async (id, body) => {
   try {
     const filter = { _id: id };
     const result = About.updateOne(filter, body);
