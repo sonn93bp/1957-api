@@ -10,21 +10,12 @@ const { InitDbDefault } = require("./src/database/init.database");
 app.use(passport.initialize());
 
 const server = http.createServer(app);
-const jwt = require("jsonwebtoken");
 server.listen(port);
 
 server.on("listening", () => {
-  MongooseConnect();
   logger.info(`${env.toUpperCase()} Server is Listening on PORT ${port}`);
-  const token = jwt.sign(
-    {
-      email: "darius@gmail.com",
-    },
-    "G8342ltj55bMzlP3YfQdZWlL56E1de7t",
-    { expiresIn: "1h" }
-  );
+  MongooseConnect();
   InitDbDefault();
-  logger.info(token);
 });
 
 const onError = (error) => {

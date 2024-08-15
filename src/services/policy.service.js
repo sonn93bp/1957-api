@@ -1,7 +1,8 @@
 const Policy = require("../models/policy.model");
 
-const getAll = async () => {
-  const result = await Policy.find();
+const getAll = async (level) => {
+  const filter = { parent: { $exists: !!level } };
+  const result = await Policy.find(filter);
   return result;
 };
 

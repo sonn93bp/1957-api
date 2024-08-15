@@ -20,9 +20,10 @@ const getOne = async (req, res, next) => {
   }
 };
 
-const getAll = async (_, res, next) => {
+const getAll = async (req, res, next) => {
   try {
-    const response = await service.getAll();
+    const { level } = req.query;
+    const response = await service.getAll(level);
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     return next(error);

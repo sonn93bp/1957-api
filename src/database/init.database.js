@@ -9,6 +9,8 @@ const initAbout = () => {
       if (!about) {
         aboutService.create({
           content: "",
+          title: "Title About",
+          slug: "about",
         });
       }
     })

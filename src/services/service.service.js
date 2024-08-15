@@ -1,7 +1,8 @@
 const Service = require("../models/service.model");
 
-const getAll = async () => {
-  const result = await Service.find();
+const getAll = async (level) => {
+  const filter = { parent: { $exists: !!level } };
+  const result = await Service.find(filter);
   return result;
 };
 

@@ -1,7 +1,8 @@
 const Project = require("../models/project.model");
 
-const getAll = async () => {
-  const result = await Project.find();
+const getAll = async (level) => {
+  const filter = { parent: { $exists: !!level } };
+  const result = await Project.find(filter);
   return result;
 };
 

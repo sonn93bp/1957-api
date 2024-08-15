@@ -3,6 +3,14 @@ const { HidenJsonField } = require("../../lib/mongoose.hiden.plugin");
 const { SeoSchema } = require("./sub/seo.model");
 
 var aboutSchema = new Schema({
+  title: {
+    type: String,
+    require: true,
+  },
+  slug: {
+    type: String,
+    require: true,
+  },
   content: {
     type: String,
   },

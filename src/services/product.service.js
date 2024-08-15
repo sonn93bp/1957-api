@@ -1,7 +1,8 @@
 const Product = require("./../models/product.model");
 
-const getAll = async () => {
-  const result = await Product.find();
+const getAll = async (level) => {
+  const filter = { parent: { $exists: !!level } };
+  const result = await Product.find(filter);
   return result;
 };
 
