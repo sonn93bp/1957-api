@@ -1,8 +1,12 @@
 const Product = require("./../models/product.model");
+const query = require("./queries/filter.query");
 
-const getAll = async (level) => {
-  const filter = { parent: { $exists: !!level } };
-  const result = await Product.find(filter);
+const getAll = async (param) => {
+  const pipeline = query({
+    model: "products",
+    ...param,
+  });
+  const result = await Product.aggregate(pipeline.aggregate);
   return result;
 };
 

@@ -7,6 +7,12 @@ app.use("/slider", require("./slider.route"));
 app.use("/about", require("./about.route"));
 app.use("/contact", require("./contact.route"));
 app.use("/news", require("./news.route"));
+/**
+ * @openapi
+ * tags:
+ *   name: Products
+ *   description: Product management
+ */
 app.use("/products", require("./product.route"));
 app.use("/projects", require("./project.route"));
 app.use("/services", require("./service.route"));

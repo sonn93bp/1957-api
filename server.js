@@ -8,7 +8,6 @@ const { InitDbDefault } = require("./src/database/init.database");
 
 // Enable authentication
 app.use(passport.initialize());
-
 const server = http.createServer(app);
 server.listen(port);
 
