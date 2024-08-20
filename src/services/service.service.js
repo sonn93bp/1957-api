@@ -1,8 +1,12 @@
 const Service = require("../models/service.model");
+const query = require("./queries/filter.query");
 
 const getAll = async (level) => {
-  const filter = { parent: { $exists: !!level } };
-  const result = await Service.find(filter);
+  const pipeline = query({
+    model: "services",
+    ...param,
+  });
+  const result = await Service.aggregate(pipeline.aggregate);
   return result;
 };
 
