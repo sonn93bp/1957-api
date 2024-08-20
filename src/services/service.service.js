@@ -1,7 +1,7 @@
 const Service = require("../models/service.model");
 const query = require("./queries/filter.query");
 
-const getAll = async (level) => {
+const getAll = async (param) => {
   const pipeline = query({
     model: "services",
     ...param,
