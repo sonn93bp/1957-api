@@ -1,7 +1,9 @@
 const userService = require("./../services/user.service");
 const aboutService = require("./../services/about.service");
 const contactService = require("./../services/contact.service");
+const benefitsService = require("./../services/benefits.service");
 const logger = require("../../lib/config/logger.config");
+
 const initAbout = () => {
   aboutService
     .get()
@@ -46,8 +48,22 @@ const initAdminUser = () => {
     });
 };
 
+const initBenefits = () => {
+  benefitsService
+    .get()
+    .then((contact) => {
+      if (!contact) {
+        benefitsService.create({});
+      }
+    })
+    .catch((err) => {
+      logger.error(err);
+    });
+};
+
 exports.InitDbDefault = async () => {
   initAbout();
   initContact();
   initAdminUser();
+  initBenefits();
 };

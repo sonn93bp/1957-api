@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express.Router();
 app.use("/about", require("./about.route"));
+app.use("/benefits", require("./benefits.route"));
 app.use("/slider", require("./slider.route"));
 app.use("/contact", require("./contact.route"));
 app.use("/news", require("./news.route"));
