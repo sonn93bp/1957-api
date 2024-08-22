@@ -19,7 +19,40 @@ const get = async (_, res, next) => {
   }
 };
 
+const update = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const response = await service.update(id, req.body);
+    return res.status(OK).json({ data: response, success: "SUCCESS" });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const deleteById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const response = await service.deleteById(id);
+    return res.status(OK).json({ data: response, success: "SUCCESS" });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getOne = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const response = await service.getOne(id);
+    return res.status(OK).json({ data: response, success: "SUCCESS" });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   create,
   get,
+  update,
+  deleteById,
+  getOne,
 };

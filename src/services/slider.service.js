@@ -15,8 +15,28 @@ const create = async (sliderData) => {
     logger.error(err);
   }
 };
+const deleteById = async (id) => {
+  const result = await Slider.deleteOne({
+    _id: id,
+  });
+  return result;
+};
+
+const update = async (id, body) => {
+  const filter = { _id: id };
+  const service = Slider.updateOne(filter, body);
+  return service;
+};
+
+const getOne = async (id) => {
+  const result = await Service.findById({ _id: id });
+  return result;
+};
 
 module.exports = {
   get,
   create,
+  deleteById,
+  update,
+  getOne,
 };
