@@ -9,11 +9,11 @@ module.exports.ImageSchema = new Schema({
     type: String,
     default: "Done",
   },
-  name: {
+  filename: {
     type: String,
     require: true,
   },
-  url: {
+  path: {
     type: String,
     require: true,
   },
