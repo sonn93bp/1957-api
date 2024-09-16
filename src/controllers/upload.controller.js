@@ -1,10 +1,14 @@
 const { remove } = require("./../../lib/config/storage.config");
+const {apiDomain} = require("./../../lib/config/env.config");
 const uploadMultiFile = async (req, res, next) => {
   try {
     if (!req.files || req.files.length === 0) {
       return res.status(400).send("No files uploaded.");
     }
-    res.status(200).json({ images: req.files });
+    res.status(200).json({ images: req.files.map(file => {
+                                url = `${apiDomain}/${file.destination}${file.originalname}`
+                                return {url, ...file}
+                              }) });
   } catch (error) {
     return next(error);
   }

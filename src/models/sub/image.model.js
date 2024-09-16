@@ -13,6 +13,10 @@ module.exports.ImageSchema = new Schema({
     type: String,
     require: true,
   },
+  url: {
+    type: String,
+    require: true,
+  },
   path: {
     type: String,
     require: true,
