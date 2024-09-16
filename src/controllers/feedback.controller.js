@@ -1,4 +1,4 @@
-const service = require("../services/service.service");
+const service = require("../services/feedback.service");
 const { CREATED, OK } = require("../../lib/utils/constants.utils");
 
 const create = async (req, res, next) => {
@@ -10,37 +10,19 @@ const create = async (req, res, next) => {
   }
 };
 
-const getOne = async (req, res, next) => {
+const get = async (_, res, next) => {
   try {
-    const { id } = req.params;
-    const response = await service.getOne(id);
+    const response = await service.get();
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     return next(error);
   }
 };
 
-const getAll = async (req, res, next) => {
-  try {
-    const response = await service.getAll(req.query);
-    return res.status(OK).json({ data: response, success: "SUCCESS" });
-  } catch (error) {
-    return next(error);
-  }
-};
 const update = async (req, res, next) => {
   try {
     const { id } = req.params;
     const response = await service.update(id, req.body);
-    return res.status(OK).json({ data: response, success: "SUCCESS" });
-  } catch (error) {
-    return next(error);
-  }
-};
-const getBySlug = async (req, res, next) => {
-  try {
-    const { slug } = req.params;
-    const response = await service.getBySlug(slug);
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     return next(error);
@@ -57,10 +39,10 @@ const deleteById = async (req, res, next) => {
   }
 };
 
-const getMappingSlug = async (_, res, next) => {
+const getOne = async (req, res, next) => {
   try {
-    console.log("dd")
-    const response = await service.getMappingSlug();
+    const { id } = req.params;
+    const response = await service.getOne(id);
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     return next(error);
@@ -69,10 +51,8 @@ const getMappingSlug = async (_, res, next) => {
 
 module.exports = {
   create,
-  getOne,
-  getAll,
+  get,
   update,
-  getBySlug,
   deleteById,
-  getMappingSlug,
+  getOne,
 };

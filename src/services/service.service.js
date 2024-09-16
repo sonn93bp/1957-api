@@ -38,6 +38,15 @@ const deleteById = async (id) => {
   });
   return result;
 };
+
+const getMappingSlug = async () => {
+  const pipeline = query({
+    model: "services",
+    level: 1
+  });
+  const result = await Service.aggregate(pipeline.getMappingSlug);
+  return result;
+};
 module.exports = {
   getAll,
   getOne,
@@ -45,4 +54,5 @@ module.exports = {
   update,
   getBySlug,
   deleteById,
+  getMappingSlug,
 };
