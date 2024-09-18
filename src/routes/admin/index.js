@@ -4,7 +4,7 @@ const app = express.Router();
 app.use(passport.authenticate("jwt", { session: false }));
 app.use("/users", require("./user.route"));
 app.use("/slider", require("./slider.route"));
-app.use("/feedbacks", require("./slider.route"));
+app.use("/feedbacks", require("./feedback.route"));
 app.use("/about", require("./about.route"));
 app.use("/setting", require("./setting.route"));
 app.use("/benefits", require("./benefits.route"));
