@@ -1,5 +1,6 @@
 const userService = require("./../services/user.service");
 const aboutService = require("./../services/about.service");
+const adviseService = require("./../services/advise.service");
 const settingService = require("./../services/setting.service");
 const contactService = require("./../services/contact.service");
 const benefitsService = require("./../services/benefits.service");
@@ -14,6 +15,23 @@ const initAbout = () => {
           content: "",
           title: "Title About",
           slug: "about",
+        });
+      }
+    })
+    .catch((err) => {
+      logger.error(err);
+    });
+};
+
+const initAdvise = () => {
+  adviseService
+    .get()
+    .then((advise) => {
+      if (!advise) {
+        adviseService.create({
+          content: "",
+          title: "Title Advise",
+          slug: "advise",
         });
       }
     })
@@ -83,4 +101,5 @@ exports.InitDbDefault = async () => {
   initAdminUser();
   initBenefits();
   initSetting();
+  initAdvise();
 };

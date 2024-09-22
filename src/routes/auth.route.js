@@ -4,7 +4,7 @@ const { validate } = require("express-validation");
 const { logIn, refreshToken } = require("../validations/auth.validation");
 const controller = require("../controllers/auth.controller");
 
-app.route("/login").post(controller.logIn);
+app.route("/login").post(validate(logIn), controller.logIn);
 
 app
   .route("/logout")

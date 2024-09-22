@@ -1,8 +1,7 @@
 const Request = require("../models/request.model");
 
-const getAll = async (level) => {
-  const filter = { parent: { $exists: !!level } };
-  const result = await Request.find(filter);
+const getAll = async () => {
+  const result = await Request.find();
   return result;
 };
 

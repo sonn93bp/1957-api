@@ -1,3 +1,5 @@
+const { Status } = require("../../../lib/utils/enum/status.enum");
+
 module.exports = (param) => {
   return {
     aggregate: [
@@ -17,6 +19,7 @@ module.exports = (param) => {
       },
       {
         $match: {
+          $and: [!!param.user ? {} : {"status": Status.Active}],
           $or: [
             { "parentSchema.slug": param.parent_slug || null },
             { parent: { $exists: !!param.level } },
@@ -29,8 +32,18 @@ module.exports = (param) => {
         },
       },
       {
-        $project: {
+        $project: !!param.user ? {
           parentSchema: 0, // Exclude the parentSchema field from the final output
+        } : {
+          parentSchema: 0, // Exclude the parentSchema field from the final output
+          content: 0,
+          created_at: 0,
+          update_at: 0,
+          parent: 0,
+          colors: 0,
+          index: 0,
+          _id: 0,
+          status: 0
         },
       },
     ],
@@ -50,6 +63,7 @@ module.exports = (param) => {
       },
       {
         $match: {
+          $and: [{"status": Status.Active}],
           $or: [
             { parent: { $exists: true } },
           ],

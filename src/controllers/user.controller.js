@@ -20,7 +20,18 @@ const getInfo = async (req, res, next) => {
   }
 };
 
+const updatePwd = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const response = await service.updatePwd(id, req.body);
+    return res.status(OK).json({ data: response, success: "SUCCESS" });
+  } catch (error) {
+    return next(error)
+  }
+}
+
 module.exports = {
   create,
   getInfo,
+  updatePwd,
 };

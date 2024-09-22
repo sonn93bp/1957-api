@@ -1,8 +1,11 @@
 const Slider = require("../models/slider.model");
 const logger = require("../../lib/config/logger.config");
+const query = require("./queries/basic.query");
 
-const get = async () => {
-  const result = await Slider.find();
+const get = async (user) => {
+  const basic = query(user);
+  const result = await Slider.find(basic.basicFilter)
+  .select(basic.basicIgnoreSelect);
   return result;
 };
 

@@ -10,10 +10,23 @@ const create = async (req, res, next) => {
   }
 };
 
-const get = async (req, res, next) => {
+const getOne = async (req, res, next) => {
   try {
-    const { newsId } = req.params;
-    const response = await service.get(newsId);
+    const { id } = req.params;
+    const response = await service.getOne(id);
+    return res.status(OK).json({ data: response, success: "SUCCESS" });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getAll = async (req, res, next) => {
+  try {
+    const param = {
+      user: req.user,
+      ...req.query
+    }
+    const response = await service.getAll(param);
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     return next(error);
@@ -21,16 +34,37 @@ const get = async (req, res, next) => {
 };
 const update = async (req, res, next) => {
   try {
-    const { newsId } = req.params;
-    const response = await service.update(newsId, req.body);
+    const { id } = req.params;
+    const response = await service.update(id, req.body);
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
-    console.log(error);
+    return next(error);
+  }
+};
+const getBySlug = async (req, res, next) => {
+  try {
+    const { slug } = req.params;
+    const response = await service.getBySlug(slug);
+    return res.status(OK).json({ data: response, success: "SUCCESS" });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const deleteById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const response = await service.deleteById(id);
+    return res.status(OK).json({ data: response, success: "SUCCESS" });
+  } catch (error) {
     return next(error);
   }
 };
 module.exports = {
   create,
-  get,
+  getOne,
+  getAll,
   update,
+  getBySlug,
+  deleteById,
 };

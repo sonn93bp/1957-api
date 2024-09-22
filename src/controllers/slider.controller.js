@@ -10,9 +10,9 @@ const create = async (req, res, next) => {
   }
 };
 
-const get = async (_, res, next) => {
+const get = async (req, res, next) => {
   try {
-    const response = await service.get();
+    const response = await service.get(req.user);
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     return next(error);

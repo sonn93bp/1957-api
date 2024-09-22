@@ -1,8 +1,12 @@
 const Policy = require("../models/policy.model");
+const query = require("./queries/filter.query");
 
-const getAll = async (level) => {
-  const filter = { parent: { $exists: !!level } };
-  const result = await Policy.find(filter);
+const getAll = async (param) => {
+  const pipeline = query({
+    model: "policies",
+    ...param,
+  });
+  const result = await Policy.aggregate(pipeline.aggregate);
   return result;
 };
 

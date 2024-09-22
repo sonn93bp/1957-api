@@ -22,7 +22,11 @@ const getOne = async (req, res, next) => {
 
 const getAll = async (req, res, next) => {
   try {
-    const response = await service.getAll(req.query);
+    const param = {
+      user: req.user,
+      ...req.query
+    }
+    const response = await service.getAll(param);
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
     return next(error);
@@ -59,7 +63,6 @@ const deleteById = async (req, res, next) => {
 
 const getMappingSlug = async (_, res, next) => {
   try {
-    console.log("dd")
     const response = await service.getMappingSlug();
     return res.status(OK).json({ data: response, success: "SUCCESS" });
   } catch (error) {
