@@ -1,7 +1,7 @@
 const Feedback = require("../models/feedback.model");
 const logger = require("../../lib/config/logger.config");
 const query = require("./queries/basic.query");
-const get = async () => {
+const get = async (user) => {
   const basic = query(user);
   const result = await Feedback.find(basic.basicFilter)
   .select(basic.basicIgnoreSelect);
