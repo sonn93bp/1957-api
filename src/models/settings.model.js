@@ -2,8 +2,10 @@ const { Schema, model } = require("mongoose");
 const { HidenJsonField } = require("../../lib/mongoose.hiden.plugin");
 const { SeoSchema } = require("./sub/seo.model");
 const { SocialDetailSchema } = require("./sub/social.detail.model");
+const { BasicSchema } = require("./sub/basic.model");
 
 var settingSchema = new Schema({
+  info_basic: BasicSchema,
   oaid_zalo: {
     type: String,
   },
@@ -23,7 +25,7 @@ var settingSchema = new Schema({
     type: String,
   },
   seo: SeoSchema,
-  soccials: [SocialDetailSchema],
+  socials: [SocialDetailSchema],
   created_at: {
     type: Date,
     default: Date.now,
