@@ -4,6 +4,7 @@ const { Status } = require("../../lib/utils/enum/status.enum");
 var requestSchema = new Schema({
   index: {
     type: Number,
+    default: 1,
     require: true,
   },
   name: {
